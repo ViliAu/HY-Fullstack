@@ -1,0 +1,48 @@
+### GET users
+GET http://localhost:3001/api/users
+Accept: application/json
+Content-Type: application/json
+
+### new user
+POST http://localhost:3001/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username": "matti22",
+    "name": "matti",
+    "password": "1234"
+}
+
+### login
+# @name login
+POST http://localhost:3001/api/users/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username": "matti22",
+    "password": "1234"
+}
+
+### post new
+# @name newBlog
+POST http://localhost:3001/api/blogs
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
+
+{
+    "_id": "5a422bc61b54a888234d17fc",
+    "title": "The pain of testing",
+    "author": "Terry A. Davis",
+    "url": "http://example.com/",
+    "likes": 20,
+    "__v": 0
+}
+
+### del
+DELETE http://localhost:3001/api/blogs/{{newBlog.response.body.$.id}}
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
