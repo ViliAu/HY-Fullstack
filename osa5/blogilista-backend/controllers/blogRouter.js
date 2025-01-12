@@ -1,9 +1,5 @@
 const router = require('express').Router()
 const Blog = require('../models/blog')
-const logger = require('../utils/logger')
-const jwt = require('jsonwebtoken')
-const User = require('../models/user')
-const tokenExtractor = require('../middleware/tokenExtractor')
 const userExtractor = require('../middleware/userExtractor')
 require('express-async-errors')
 
